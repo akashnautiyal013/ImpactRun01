@@ -36,7 +36,6 @@ class LeaderboardData extends Component {
   
       constructor(props) {
         super(props);
-        this.fetchLeaderBoardLocally();
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
           LeaderBoard: ds.cloneWithRows([]),
@@ -47,6 +46,8 @@ class LeaderboardData extends Component {
           refreshing:false,
           downrefresh:true,
         };
+        console.log("blah",this.props.value);
+
         this.renderRow = this.renderRow.bind(this);
       }
      
@@ -59,68 +60,18 @@ class LeaderboardData extends Component {
         })
       }
 
-      
-      fetchLeaderBoardLocally(){
-        AsyncStorage.getItem('leaderBoard', (err, result) => {
-        var jsonData = JSON.parse(result);
-        console.log("jsonData",jsonData);
-        if (result != null || undefined) {
-
-          this.setState({
-            LeaderBoard: this.state.LeaderBoard.cloneWithRows(jsonData.results),
-            loaded:true,
-          })        
-        }else{
-         this.fetchDataIfInternet()
-        }
-        });
-      }
 
       componentDidMount() {  
+        console.log('commingdata',this.props.LeaderBoardResult);
         setTimeout(() => {this.setState({downrefresh: false})}, 1000)
+        this.setState({
+          LeaderBoard: this.state.LeaderBoard.cloneWithRows(this.props.LeaderBoardResult),
+          loaded:true,
+        })
       
       }
       
-      fetchDataIfInternet(){
-        NetInfo.isConnected.fetch().done(
-          (isConnected) => { this.setState({isConnected}); 
-            if (isConnected) {
-              this.fetchLeaderBoard();
-            }else{
-              return this.fetchLeaderBoardLocally();
-            }  
-          }
-        );
-      }
 
-      fetchLeaderBoard() {
-       AsyncStorage.removeItem('leaderBoard',(err) => {
-       });
-        var token = this.props.user.auth_token;
-        console.log("token",token);
-        var url = apis.leaderBoardapi;
-        fetch(url,{
-          method: "GET",
-          headers: {  
-            'Authorization':"Bearer "+ token,
-            'Content-Type':'application/x-www-form-urlencoded',
-          }
-        })
-        .then( response => response.json() )
-        .then( jsonData => {
-          this.setState({
-            LeaderBoard: this.state.LeaderBoard.cloneWithRows(jsonData.results),
-            loaded: true,
-            refreshing:false,
-          });
-          let leaderBoard = jsonData;
-          AsyncStorage.setItem('leaderBoard',JSON.stringify(leaderBoard));
-          AsyncStorage.getItem('leaderBoard', (err, result) => {   
-          });  
-          
-        })
-        .catch( error => console.log('Error fetching: ' + error) );
-      }
 
 
       _onRefresh() {
@@ -173,7 +124,7 @@ class LeaderboardData extends Component {
             <Text style={[styles.txt,{color:textColor}]}>{rowData.first_name} {rowData.last_name}</Text>
             </View >
             <View style={styles.flexbox3}>
-            <Text style={[styles.txtSec,{color:textColor}]}>{parseFloat(rowData.last_week_distance.last_week_distance).toFixed(0)} Km</Text>
+            <Text style={[styles.txtSec,{color:textColor}]}>{parseFloat(rowData.distance).toFixed(0)} Km</Text>
             </View>
           </View>
         );

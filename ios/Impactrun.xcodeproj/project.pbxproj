@@ -384,7 +384,6 @@
 		2F81B07EEC3849D491066E24 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		304DED41A7404119A176ED59 /* libRNViewShot.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNViewShot.a; sourceTree = "<group>"; };
 		31E1B80977F5476A8D804A07 /* libRNShare.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNShare.a; sourceTree = "<group>"; };
-		380984101F32043E00E44279 /* RNiOSCharts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = RNiOSCharts; path = "../node_modules/react-native-ios-charts/RNiOSCharts"; sourceTree = "<group>"; };
 		380ED9F61F04359E00AACE4C /* AppHub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppHub.xcodeproj; path = ../node_modules/apphub/AppHub/AppHub.xcodeproj; sourceTree = "<group>"; };
 		380EDA021F0435B200AACE4C /* libAppHubTestUtils.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAppHubTestUtils.a; path = "../node_modules/apphub/AppHubTestUtils/build/Debug-iphoneos/libAppHubTestUtils.a"; sourceTree = "<group>"; };
 		3810C2F71E65DC7100DCC7C6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -598,7 +597,6 @@
 		13B07FAE1A68108700A75B9A /* ImpactRun */ = {
 			isa = PBXGroup;
 			children = (
-				380984101F32043E00E44279 /* RNiOSCharts */,
 				38B00ADC1D377F7600863FF0 /* AppDelegate.h */,
 				3824332C1E58002B0094BBC8 /* Info.plist */,
 				38B00AD01D377D6900863FF0 /* AppDelegate.m */,
